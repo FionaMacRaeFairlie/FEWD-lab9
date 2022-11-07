@@ -19,13 +19,6 @@ let databse = [
   },
 ];
 
-// app.get("/", (req, res) => {
-//   res.json({
-//     route: "/",
-//     authentication: false,
-//   });
-// });
-
 app.use("/login", (req, res) => {
   let username = "";
   if (req.body.username) username = req.body.username;
