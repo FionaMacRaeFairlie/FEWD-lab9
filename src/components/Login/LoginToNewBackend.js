@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import Registerform from './Register';
+
 
 async function loginUser(credentials) {
-    return fetch('http://localhost:8080/login', {
+    return fetch('http://localhost:3000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -15,6 +16,13 @@ async function loginUser(credentials) {
 export default function Login({ setToken }) {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
+    const [isShown, setIsShown] = useState(false);
+    
+   
+    const handleClick = event => {
+      setIsShown(current => !current);
+    };
+
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -23,6 +31,7 @@ export default function Login({ setToken }) {
           password
         });
         setToken(token);
+        setIsShown(false);
        
       }
 
@@ -42,10 +51,9 @@ export default function Login({ setToken }) {
           <button type="submit">Submit</button>
         </div>
       </form>
+      <p>Not registered yet? <button onClick={handleClick}>Click here</button></p>
+      {isShown && <Registerform />}
      
     </div>
   );
-}
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired
 }
