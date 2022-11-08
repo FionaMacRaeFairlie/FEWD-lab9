@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import RegisterMessage from './RegisterMessage';
 
 async function registerUser(credentials) {
-    return fetch('http://localhost:3000/users/register', {
+    return fetch('http://localhost:3001/users/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
